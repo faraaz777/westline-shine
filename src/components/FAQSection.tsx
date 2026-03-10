@@ -45,11 +45,11 @@ const defaultFaqs: FAQItem[] = [
 
 const FAQSection = ({ faqs = defaultFaqs, showHeading = true }: FAQSectionProps) => {
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-20 md:py-24 bg-section-light">
       <div className="container max-w-3xl">
         {showHeading && (
           <ScrollReveal className="text-center mb-12">
-            <span className="text-accent font-semibold text-sm uppercase tracking-widest mb-3 block">FAQ</span>
+            <span className="text-primary font-semibold text-sm uppercase tracking-widest mb-3 block">FAQ</span>
             <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground">
               Frequently Asked Questions
             </h2>
@@ -62,7 +62,7 @@ const FAQSection = ({ faqs = defaultFaqs, showHeading = true }: FAQSectionProps)
               <AccordionItem
                 key={i}
                 value={`faq-${i}`}
-                className="bg-steel/30 border border-border rounded-lg px-6 data-[state=open]:glow-border"
+                className="bg-card border border-border rounded-xl px-6 card-shadow"
               >
                 <AccordionTrigger className="text-foreground font-heading font-semibold text-left hover:no-underline py-5">
                   {faq.question}
