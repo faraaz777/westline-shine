@@ -12,7 +12,7 @@ interface FAQItem {
 }
 
 interface FAQSectionProps {
-  faqs: FAQItem[];
+  faqs?: FAQItem[];
   showHeading?: boolean;
 }
 
