@@ -5,29 +5,24 @@ import {
   FileText,
   Eye,
   ThumbsUp,
-  Phone,
-  Droplets,
-  Home,
-  Paintbrush,
-  Wrench,
-  Sun,
-  Layers,
   ClipboardCheck,
   Search,
   ShieldCheck,
   Sparkles,
   MessageSquare,
   Clock,
-  CheckCircle2,
   ArrowRight,
+  Phone,
+  CheckCircle2,
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionHeading from "@/components/SectionHeading";
+import HeroCarousel from "@/components/HeroCarousel";
+import ServiceCards from "@/components/ServiceCards";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
-import CTABanner from "@/components/CTABanner";
-import heroBg from "@/assets/hero-bg.jpg";
+import QuoteForm from "@/components/QuoteForm";
 import beforeImg from "@/assets/before-driveway.jpg";
 import afterImg from "@/assets/after-driveway.jpg";
 
@@ -36,15 +31,6 @@ const trustBadges = [
   { icon: FileText, label: "Free Quotes" },
   { icon: Eye, label: "Before & After Proof" },
   { icon: ThumbsUp, label: "Satisfaction Focused" },
-];
-
-const services = [
-  { icon: Home, title: "Roof Cleaning", desc: "Tile and Colorbond roof cleaning that restores your roof's original finish safely.", href: "/services/roof-cleaning" },
-  { icon: Droplets, title: "Gutter Cleaning", desc: "Complete gutter clearing and optional gutter guard installation for lasting protection.", href: "/services/gutter-cleaning" },
-  { icon: Layers, title: "Face Brick Cleaning", desc: "Gentle, material-appropriate cleaning that revives brickwork without damage.", href: "/services/face-brick-cleaning" },
-  { icon: Paintbrush, title: "Roof Painting", desc: "Professional roof painting with premium coatings for a long-lasting, weatherproof finish.", href: "/services/roof-painting" },
-  { icon: Wrench, title: "Pressure Washing", desc: "High-pressure cleaning for driveways, patios, and paving. Streak-free results guaranteed.", href: "/services/pressure-washing" },
-  { icon: Sun, title: "Solar Panel Cleaning", desc: "Safe, careful cleaning that restores panel efficiency without voiding warranties.", href: "/services/solar-panel-cleaning" },
 ];
 
 const steps = [
@@ -74,118 +60,61 @@ const Index = () => {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: "Westline Property Maintenance",
-            description: "Professional property maintenance and exterior cleaning services",
+            description: "Professional property maintenance and exterior cleaning services in Perth",
             telephone: "[PHONE]",
             email: "[EMAIL]",
-            address: { "@type": "PostalAddress", addressLocality: "[CITY/REGION]" },
+            address: { "@type": "PostalAddress", addressLocality: "Perth", addressRegion: "WA" },
             openingHours: "[HOURS]",
-            image: heroBg,
             priceRange: "$$",
           }),
         }}
       />
 
-      {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center bg-gradient-hero noise-texture overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={heroBg} alt="" className="w-full h-full object-cover opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
-        </div>
+      {/* Hero Carousel */}
+      <HeroCarousel />
 
-        <div className="container relative z-10 py-20 md:py-32">
-          <div className="max-w-3xl">
-            <ScrollReveal>
-              <span className="text-accent font-semibold text-sm uppercase tracking-widest mb-4 block">
-                Westline Property Maintenance
-              </span>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-foreground mb-6">
-                Your Property, Restored To Its Best
-              </h1>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <p className="text-lg md:text-xl text-foreground/70 max-w-xl mb-8 leading-relaxed">
-                Professional exterior cleaning and property maintenance. Local, insured, and committed to results that last.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal delay={0.3}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="hero" size="xl" asChild>
-                  <Link to="/contact">
-                    <FileText className="w-5 h-5" />
-                    Get a Free Quote
-                  </Link>
-                </Button>
-                <Button variant="heroOutline" size="xl" asChild>
-                  <Link to="/services">
-                    View Services
-                  </Link>
-                </Button>
+      {/* Trust badges */}
+      <section className="border-b border-border">
+        <div className="container py-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {trustBadges.map((badge) => (
+              <div key={badge.label} className="flex items-center justify-center gap-3 py-2">
+                <badge.icon className="w-5 h-5 text-primary flex-shrink-0" />
+                <span className="text-sm font-semibold text-foreground">{badge.label}</span>
               </div>
-            </ScrollReveal>
+            ))}
           </div>
-
-          {/* Trust badges */}
-          <ScrollReveal delay={0.4} className="mt-16">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {trustBadges.map((badge) => (
-                <div key={badge.label} className="flex items-center gap-3 bg-steel/30 border border-border rounded-lg px-4 py-3">
-                  <badge.icon className="w-5 h-5 text-accent flex-shrink-0" />
-                  <span className="text-sm font-semibold text-foreground">{badge.label}</span>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-24">
         <div className="container">
           <SectionHeading
             label="Our Services"
             title="Comprehensive Property Care"
             description="From rooftops to driveways, we deliver meticulous results with methods matched to every surface."
           />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, i) => (
-              <ScrollReveal key={service.title} delay={i * 0.08}>
-                <Link
-                  to={service.href}
-                  className="group block bg-steel/30 border border-border rounded-lg p-6 card-hover glow-border h-full"
-                >
-                  <service.icon className="w-10 h-10 text-accent mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="font-heading font-bold text-lg text-foreground mb-2">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">{service.desc}</p>
-                  <span className="text-accent text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all duration-200">
-                    Learn More <ArrowRight className="w-4 h-4" />
-                  </span>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ServiceCards />
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="py-20 md:py-28 bg-steel/20">
+      <section className="py-20 md:py-24 bg-section-light">
         <div className="container">
           <SectionHeading
             label="Our Process"
             title="How It Works"
             description="A clear, four-step process designed to protect your property and deliver outstanding results."
           />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, i) => (
               <ScrollReveal key={step.title} delay={i * 0.1}>
-                <div className="text-center p-6">
-                  <div className="w-16 h-16 rounded-full bg-gradient-cta flex items-center justify-center mx-auto mb-5 glow-blue">
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mx-auto mb-5">
                     <step.icon className="w-7 h-7 text-primary-foreground" />
                   </div>
-                  <span className="text-accent font-bold text-sm mb-2 block">Step {i + 1}</span>
+                  <span className="text-primary font-bold text-sm mb-2 block">Step {i + 1}</span>
                   <h3 className="font-heading font-bold text-lg text-foreground mb-2">{step.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
                 </div>
@@ -196,21 +125,20 @@ const Index = () => {
       </section>
 
       {/* Why Westline */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-24">
         <div className="container">
           <SectionHeading
             label="Why Westline"
             title="The Westline Difference"
             description="We don't just clean. We protect, communicate, and deliver results you can see."
           />
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {whyUs.map((item, i) => (
               <ScrollReveal key={item.title} delay={i * 0.1}>
-                <div className="flex gap-5 bg-steel/20 border border-border rounded-lg p-6 card-hover">
+                <div className="flex gap-5 bg-card border border-border rounded-xl p-6 card-shadow card-hover">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                      <item.icon className="w-6 h-6 text-accent" />
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <item.icon className="w-6 h-6 text-primary" />
                     </div>
                   </div>
                   <div>
@@ -225,7 +153,7 @@ const Index = () => {
       </section>
 
       {/* Before/After */}
-      <section className="py-20 md:py-28 bg-steel/20">
+      <section className="py-20 md:py-24 bg-section-light">
         <div className="container max-w-4xl">
           <SectionHeading
             label="Results"
@@ -236,7 +164,7 @@ const Index = () => {
             <BeforeAfterSlider beforeSrc={beforeImg} afterSrc={afterImg} />
           </ScrollReveal>
           <ScrollReveal className="text-center mt-8">
-            <Button variant="ctaOutline" asChild>
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground" asChild>
               <Link to="/gallery">View Full Gallery <ArrowRight className="w-4 h-4 ml-1" /></Link>
             </Button>
           </ScrollReveal>
@@ -246,25 +174,64 @@ const Index = () => {
       {/* Testimonials */}
       <TestimonialsSection />
 
+      {/* Quote Form Section */}
+      <section id="quote" className="py-20 md:py-24 bg-section-light">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <ScrollReveal>
+              <span className="text-primary font-semibold text-sm uppercase tracking-widest mb-3 block">Get Started</span>
+              <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+                Request a Free Quote
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                Fill out the form and we'll get back to you within 24 hours with a detailed quote. No obligation, no pressure.
+              </p>
+              <div className="space-y-4">
+                {[
+                  "Free, no-obligation quotes",
+                  "Response within 24 hours",
+                  "Fully insured and professional",
+                  "Surface-safe cleaning methods",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                    <span className="text-foreground font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8 p-5 bg-card border border-border rounded-xl card-shadow">
+                <p className="text-foreground font-semibold mb-1">Prefer to call?</p>
+                <a href="tel:[PHONE]" className="text-primary text-lg font-bold flex items-center gap-2 hover:underline">
+                  <Phone className="w-5 h-5" /> [PHONE]
+                </a>
+              </div>
+            </ScrollReveal>
+            <div className="bg-card border border-border rounded-xl p-6 md:p-8 card-shadow-lg">
+              <QuoteForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Service Areas Preview */}
-      <section className="py-20 md:py-28 bg-steel/20">
+      <section className="py-20 md:py-24">
         <div className="container">
           <SectionHeading
             label="Where We Work"
             title="Service Areas"
-            description="Proudly serving properties across the greater [CITY/REGION] area."
+            description="Proudly serving properties across the greater Perth area."
           />
           <ScrollReveal>
             <div className="flex flex-wrap justify-center gap-3 mb-8">
               {areas.map((area) => (
-                <span key={area} className="bg-steel/50 border border-border rounded-full px-5 py-2 text-sm text-foreground font-medium">
+                <span key={area} className="bg-secondary border border-border rounded-full px-5 py-2 text-sm text-foreground font-medium">
                   {area}
                 </span>
               ))}
             </div>
           </ScrollReveal>
           <ScrollReveal className="text-center">
-            <Button variant="ctaOutline" asChild>
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground" asChild>
               <Link to="/service-areas">View All Areas <ArrowRight className="w-4 h-4 ml-1" /></Link>
             </Button>
           </ScrollReveal>
@@ -274,8 +241,33 @@ const Index = () => {
       {/* FAQ Preview */}
       <FAQSection />
 
-      {/* CTA */}
-      <CTABanner />
+      {/* CTA Banner */}
+      <section className="bg-gradient-section py-20 md:py-24">
+        <div className="container text-center max-w-2xl">
+          <ScrollReveal>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-primary-foreground mb-4">
+              Ready To Restore Your Property?
+            </h2>
+            <p className="text-primary-foreground/70 text-lg mb-8">
+              Get a free, no-obligation quote. We respond within 24 hours.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button size="xl" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 font-bold" asChild>
+                <Link to="/contact">
+                  <FileText className="w-5 h-5" />
+                  Get a Free Quote
+                </Link>
+              </Button>
+              <Button size="xl" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" asChild>
+                <a href="tel:[PHONE]">
+                  <Phone className="w-5 h-5" />
+                  Call Now
+                </a>
+              </Button>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
     </>
   );
 };

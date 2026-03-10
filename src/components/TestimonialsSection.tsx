@@ -30,10 +30,10 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-20 md:py-24">
       <div className="container">
         <ScrollReveal className="text-center mb-12">
-          <span className="text-accent font-semibold text-sm uppercase tracking-widest mb-3 block">Testimonials</span>
+          <span className="text-primary font-semibold text-sm uppercase tracking-widest mb-3 block">Testimonials</span>
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground">
             Trusted By Property Owners
           </h2>
@@ -42,9 +42,9 @@ const TestimonialsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((t, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
-              <div className="bg-steel/50 border border-border rounded-lg p-6 md:p-8 card-hover glow-border">
-                <Quote className="w-8 h-8 text-accent/30 mb-4" />
-                <p className="text-foreground/90 leading-relaxed mb-6">{t.text}</p>
+              <div className="bg-card border border-border rounded-xl p-6 md:p-8 card-shadow card-hover">
+                <Quote className="w-8 h-8 text-primary/20 mb-4" />
+                <p className="text-foreground/80 leading-relaxed mb-6">{t.text}</p>
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="font-heading font-bold text-foreground">{t.name}</p>
@@ -52,7 +52,7 @@ const TestimonialsSection = () => {
                   </div>
                   <div className="flex gap-1">
                     {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} className="w-4 h-4 fill-accent text-accent" />
+                      <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
                 </div>

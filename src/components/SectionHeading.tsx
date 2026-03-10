@@ -13,7 +13,7 @@ const SectionHeading = ({ label, title, description, align = "center" }: Section
   return (
     <ScrollReveal className={`max-w-2xl ${alignClass} mb-12 md:mb-16`}>
       {label && (
-        <span className="text-accent font-semibold text-sm uppercase tracking-widest mb-3 block">
+        <span className="text-primary font-semibold text-sm uppercase tracking-widest mb-3 block">
           {label}
         </span>
       )}
