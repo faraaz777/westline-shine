@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { SITE } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, FileText } from "lucide-react";
 
@@ -14,16 +15,30 @@ const navLinks = [
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isAtTop, setIsAtTop] = useState(true);
   const location = useLocation();
 
+  useEffect(() => {
+    const handleScroll = () => setIsAtTop(window.scrollY < 10);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-sm">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+        isAtTop
+          ? "bg-background/95 backdrop-blur-md border-border shadow-sm"
+          : "bg-background/50 backdrop-blur-sm border-border/50"
+      }`}
+    >
       <div className="container flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="flex items-center gap-2 font-heading font-bold text-xl text-foreground">
-          <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
-            <span className="text-primary-foreground text-xs font-bold">W</span>
+          <img src="/favicon.ico" alt="Westline" className="h-12 w-12 md:h-14 md:w-14 object-contain shrink-0" />
+          <div className="flex flex-col">
+            <span>WESTLINE</span>
+            <span className="text-xs font-normal text-muted-foreground">Property Maintenance</span>
           </div>
-          WESTLINE
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -44,7 +59,7 @@ const Header = () => {
 
         <div className="hidden lg:flex items-center gap-3">
           <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground" asChild>
-            <a href="tel:[PHONE]">
+            <a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>
               <Phone className="w-4 h-4" />
               Call Now
             </a>
@@ -85,7 +100,7 @@ const Header = () => {
             ))}
             <div className="flex gap-3 mt-4 px-4">
               <Button variant="outline" size="sm" className="flex-1 border-primary text-primary" asChild>
-                <a href="tel:[PHONE]">Call Now</a>
+                <a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>Call Now</a>
               </Button>
               <Button variant="cta" size="sm" className="flex-1" asChild>
                 <Link to="/contact" onClick={() => setMobileOpen(false)}>Free Quote</Link>

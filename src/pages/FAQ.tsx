@@ -21,6 +21,7 @@ const FAQ = () => {
       <section className="bg-gradient-hero noise-texture py-20 md:py-28">
         <div className="container">
           <SectionHeading
+            variant="dark"
             label="FAQ"
             title="Frequently Asked Questions"
             description="Everything you need to know about our services, methods, and process."

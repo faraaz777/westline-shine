@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone, FileText } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import { SITE } from "@/lib/site";
 
 const CTABanner = () => {
   return (
@@ -22,7 +23,7 @@ const CTABanner = () => {
               </Link>
             </Button>
             <Button size="xl" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" asChild>
-              <a href="tel:[PHONE]">
+              <a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>
                 <Phone className="w-5 h-5" />
                 Call Now
               </a>

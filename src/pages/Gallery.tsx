@@ -29,6 +29,7 @@ const Gallery = () => {
       <section className="bg-gradient-hero noise-texture py-20 md:py-28">
         <div className="container">
           <SectionHeading
+            variant="dark"
             label="Our Work"
             title="Before & After Gallery"
             description="Real results from real properties. Drag the slider to see the transformation."

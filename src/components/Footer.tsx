@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from "lucide-react";
+import { SITE } from "@/lib/site";
 
 const Footer = () => {
   return (
@@ -9,13 +10,11 @@ const Footer = () => {
           <div>
             <Link to="/" className="font-heading font-bold text-xl mb-4 block">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
-                  <span className="text-primary-foreground text-xs font-bold">W</span>
-                </div>
+                <img src="/favicon.ico" alt="Westline" className="h-8 w-8 object-contain" />
                 WESTLINE
               </div>
             </Link>
-            <p className="text-primary-foreground/60 text-sm leading-relaxed mt-4">
+            <p className="text-primary-foreground/85 text-sm leading-relaxed mt-4">
               Professional property maintenance and exterior cleaning services. Protecting your investment with care and precision.
             </p>
           </div>
@@ -32,7 +31,7 @@ const Footer = () => {
                 { label: "Solar Panel Cleaning", href: "/services/solar-panel-cleaning" },
               ].map((s) => (
                 <li key={s.href}>
-                  <Link to={s.href} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                  <Link to={s.href} className="text-primary-foreground/85 hover:text-primary-foreground transition-colors">
                     {s.label}
                   </Link>
                 </li>
@@ -51,7 +50,7 @@ const Footer = () => {
                 { label: "Get a Quote", href: "/contact" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link to={l.href} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                  <Link to={l.href} className="text-primary-foreground/85 hover:text-primary-foreground transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -62,31 +61,31 @@ const Footer = () => {
           <div>
             <h4 className="font-heading font-bold mb-4">Contact</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2 text-primary-foreground/60">
-                <Phone className="w-4 h-4 text-accent" /> <a href="tel:[PHONE]" className="hover:text-primary-foreground transition-colors">[PHONE]</a>
+              <li className="flex items-center gap-2 text-primary-foreground/85">
+                <Phone className="w-4 h-4 text-accent shrink-0" /> <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="hover:text-primary-foreground transition-colors">{SITE.phone}</a>
               </li>
-              <li className="flex items-center gap-2 text-primary-foreground/60">
-                <Mail className="w-4 h-4 text-accent" /> <a href="mailto:[EMAIL]" className="hover:text-primary-foreground transition-colors">[EMAIL]</a>
+              <li className="flex items-center gap-2 text-primary-foreground/85">
+                <Mail className="w-4 h-4 text-accent shrink-0" /> <a href={`mailto:${SITE.email}`} className="hover:text-primary-foreground transition-colors">{SITE.email}</a>
               </li>
-              <li className="flex items-center gap-2 text-primary-foreground/60">
-                <MapPin className="w-4 h-4 text-accent" /> Perth, WA
+              <li className="flex items-center gap-2 text-primary-foreground/85">
+                <MapPin className="w-4 h-4 text-accent shrink-0" /> Perth, WA
               </li>
-              <li className="flex items-center gap-2 text-primary-foreground/60">
-                <Clock className="w-4 h-4 text-accent" /> [HOURS]
+              <li className="flex items-center gap-2 text-primary-foreground/85">
+                <Clock className="w-4 h-4 text-accent shrink-0" /> {SITE.hours}
               </li>
             </ul>
             <div className="flex gap-3 mt-4">
-              <a href="[FACEBOOK]" className="text-primary-foreground/60 hover:text-accent transition-colors" aria-label="Facebook">
+              <a href={SITE.facebook} target="_blank" rel="noopener noreferrer" className="text-primary-foreground/85 hover:text-accent transition-colors" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="[INSTAGRAM]" className="text-primary-foreground/60 hover:text-accent transition-colors" aria-label="Instagram">
+              <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="text-primary-foreground/85 hover:text-accent transition-colors" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-primary-foreground/10 text-center text-sm text-primary-foreground/40">
+        <div className="mt-12 pt-8 border-t border-primary-foreground/10 text-center text-sm text-primary-foreground/70">
           © {new Date().getFullYear()} Westline Property Maintenance. All rights reserved.
         </div>
       </div>

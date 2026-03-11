@@ -17,10 +17,10 @@ const About = () => {
         <div className="container max-w-3xl text-center">
           <ScrollReveal>
             <span className="text-accent font-semibold text-sm uppercase tracking-widest mb-3 block">About</span>
-            <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
+            <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-4">
               Built On Trust, Driven By Results
             </h1>
-            <p className="text-foreground/70 text-lg">
+            <p className="text-primary-foreground/85 text-lg">
               Westline Property Maintenance was founded on a simple principle: treat every property as if it were our own. We combine professional-grade equipment with material-specific methods to deliver results that last.
             </p>
           </ScrollReveal>
@@ -30,9 +30,9 @@ const About = () => {
       <section className="py-20 md:py-28">
         <div className="container max-w-3xl">
           <ScrollReveal>
-            <div className="prose prose-invert max-w-none">
+            <div className="max-w-none">
               <p className="text-foreground/80 text-lg leading-relaxed mb-6">
-                We're a locally owned and operated team serving [CITY/REGION] and surrounding areas. With years of hands-on experience across residential, rental, and commercial properties, we understand that no two surfaces are the same.
+                We're a locally owned and operated team serving Perth and surrounding areas. With years of hands-on experience across residential, rental, and commercial properties, we understand that no two surfaces are the same.
               </p>
               <p className="text-foreground/80 text-lg leading-relaxed mb-6">
                 That's why we don't take a one-size-fits-all approach. Every job begins with an assessment. We identify the surface material, the type of staining or growth, and any surrounding areas that need protection. Then we select the right method—whether that's a gentle soft-wash, controlled pressure, or chemical treatment.

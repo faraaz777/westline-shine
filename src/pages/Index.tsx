@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { SITE } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import {
   Shield,
@@ -61,10 +62,10 @@ const Index = () => {
             "@type": "LocalBusiness",
             name: "Westline Property Maintenance",
             description: "Professional property maintenance and exterior cleaning services in Perth",
-            telephone: "[PHONE]",
-            email: "[EMAIL]",
+            telephone: SITE.phone,
+            email: SITE.email,
             address: { "@type": "PostalAddress", addressLocality: "Perth", addressRegion: "WA" },
-            openingHours: "[HOURS]",
+            openingHours: SITE.hours,
             priceRange: "$$",
           }),
         }}
@@ -201,8 +202,8 @@ const Index = () => {
               </div>
               <div className="mt-8 p-5 bg-card border border-border rounded-xl card-shadow">
                 <p className="text-foreground font-semibold mb-1">Prefer to call?</p>
-                <a href="tel:[PHONE]" className="text-primary text-lg font-bold flex items-center gap-2 hover:underline">
-                  <Phone className="w-5 h-5" /> [PHONE]
+                <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="text-primary text-lg font-bold flex items-center gap-2 hover:underline">
+                  <Phone className="w-5 h-5" /> {SITE.phone}
                 </a>
               </div>
             </ScrollReveal>
@@ -248,7 +249,7 @@ const Index = () => {
             <h2 className="font-heading font-bold text-3xl md:text-4xl text-primary-foreground mb-4">
               Ready To Restore Your Property?
             </h2>
-            <p className="text-primary-foreground/70 text-lg mb-8">
+            <p className="text-primary-foreground/90 text-lg mb-8">
               Get a free, no-obligation quote. We respond within 24 hours.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -259,7 +260,7 @@ const Index = () => {
                 </Link>
               </Button>
               <Button size="xl" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" asChild>
-                <a href="tel:[PHONE]">
+                <a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>
                   <Phone className="w-5 h-5" />
                   Call Now
                 </a>

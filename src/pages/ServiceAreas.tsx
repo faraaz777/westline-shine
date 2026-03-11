@@ -1,4 +1,5 @@
 import { MapPin } from "lucide-react";
+import { SITE } from "@/lib/site";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
@@ -16,9 +17,10 @@ const ServiceAreas = () => {
       <section className="bg-gradient-hero noise-texture py-20 md:py-28">
         <div className="container">
           <SectionHeading
+            variant="dark"
             label="Coverage"
             title="Where We Work"
-            description="Proudly serving properties across [CITY/REGION] and surrounding areas."
+            description={`Proudly serving properties across ${SITE.region} and surrounding areas.`}
           />
         </div>
       </section>
@@ -48,7 +50,7 @@ const ServiceAreas = () => {
 
           <ScrollReveal className="mt-8">
             <p className="text-center text-muted-foreground">
-              Don't see your area listed? <a href="tel:[PHONE]" className="text-accent hover:text-foreground transition-colors">Give us a call</a> — we may still be able to help.
+              Don't see your area listed? <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="text-accent hover:text-foreground transition-colors">Give us a call</a> — we may still be able to help.
             </p>
           </ScrollReveal>
         </div>

@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { FileText, Phone, CheckCircle2, ArrowRight } from "lucide-react";
+import { SITE } from "@/lib/site";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionHeading from "@/components/SectionHeading";
 import FAQSection, { type FAQItem } from "@/components/FAQSection";
@@ -22,7 +23,7 @@ const serviceData: Record<string, ServiceData> = {
   "roof-cleaning": {
     title: "Roof Tile & Colorbond Cleaning",
     metaTitle: "Roof Cleaning Services | Westline Property Maintenance",
-    metaDesc: "Professional roof tile and Colorbond roof cleaning in [CITY/REGION]. Safe methods, lasting results. Free quotes.",
+    metaDesc: `Professional roof tile and Colorbond roof cleaning in ${SITE.region}. Safe methods, lasting results. Free quotes.`,
     hero: "Restore your roof's original finish with safe, material-appropriate cleaning methods.",
     bestFor: ["Roof tiles with lichen, moss, or algae growth", "Colorbond roofs showing dirt or oxidation", "Pre-sale property presentation", "Strata or rental property maintenance"],
     process: [
@@ -43,7 +44,7 @@ const serviceData: Record<string, ServiceData> = {
   "gutter-cleaning": {
     title: "Gutter Cleaning & Gutter Guard Installation",
     metaTitle: "Gutter Cleaning & Guards | Westline Property Maintenance",
-    metaDesc: "Professional gutter cleaning and gutter guard installation in [CITY/REGION]. Prevent blockages and water damage. Free quotes.",
+    metaDesc: `Professional gutter cleaning and gutter guard installation in ${SITE.region}. Prevent blockages and water damage. Free quotes.`,
     hero: "Clear, flowing gutters that protect your property from water damage and pest entry.",
     bestFor: ["Blocked or overflowing gutters", "Properties near trees with heavy leaf fall", "Pre-winter maintenance", "Gutter guard installation for long-term protection"],
     process: [
@@ -62,7 +63,7 @@ const serviceData: Record<string, ServiceData> = {
   "face-brick-cleaning": {
     title: "Face Brick Cleaning",
     metaTitle: "Face Brick Cleaning | Westline Property Maintenance",
-    metaDesc: "Expert face brick cleaning in [CITY/REGION]. Gentle methods that restore brickwork without damage. Free quotes.",
+    metaDesc: `Expert face brick cleaning in ${SITE.region}. Gentle methods that restore brickwork without damage. Free quotes.`,
     hero: "Revive the natural beauty of your brickwork with gentle, material-appropriate cleaning.",
     bestFor: ["Mortar smears or efflorescence stains", "Mould and algae on shaded brick walls", "Paint removal from face brick", "Pre-sale curb appeal improvement"],
     process: [
@@ -82,7 +83,7 @@ const serviceData: Record<string, ServiceData> = {
   "roof-painting": {
     title: "Roof Painting",
     metaTitle: "Roof Painting Services | Westline Property Maintenance",
-    metaDesc: "Professional roof painting in [CITY/REGION]. Premium coatings, proper preparation, lasting results. Free quotes.",
+    metaDesc: `Professional roof painting in ${SITE.region}. Premium coatings, proper preparation, lasting results. Free quotes.`,
     hero: "A professionally painted roof that transforms your property's appearance and extends its lifespan.",
     bestFor: ["Faded or weathered roof tiles", "Colour change for property refresh", "Pre-sale value improvement", "Long-term roof protection"],
     process: [
@@ -102,7 +103,7 @@ const serviceData: Record<string, ServiceData> = {
   "pressure-washing": {
     title: "Driveways, Paving & Patios",
     metaTitle: "Pressure Washing Services | Westline Property Maintenance",
-    metaDesc: "High pressure washing for driveways, paving and patios in [CITY/REGION]. Streak-free results. Free quotes.",
+    metaDesc: `High pressure washing for driveways, paving and patios in ${SITE.region}. Streak-free results. Free quotes.`,
     hero: "Streak-free, even cleaning that makes your outdoor surfaces look brand new.",
     bestFor: ["Oil-stained or grime-covered driveways", "Moss and algae on brick paving", "Patio and entertaining area refresh", "Pre-sale property presentation"],
     process: [
@@ -121,7 +122,7 @@ const serviceData: Record<string, ServiceData> = {
   "solar-panel-cleaning": {
     title: "Solar Panel Cleaning",
     metaTitle: "Solar Panel Cleaning | Westline Property Maintenance",
-    metaDesc: "Professional solar panel cleaning in [CITY/REGION]. Restore efficiency safely. Free quotes.",
+    metaDesc: `Professional solar panel cleaning in ${SITE.region}. Restore efficiency safely. Free quotes.`,
     hero: "Restore your solar panel efficiency with safe, careful cleaning that protects your investment.",
     bestFor: ["Panels covered in dust, bird droppings, or pollen", "Reduced energy output from dirty panels", "Properties near construction sites or dusty roads", "Annual maintenance for optimal performance"],
     process: [
@@ -159,14 +160,14 @@ const ServicePage = () => {
         <div className="container max-w-3xl text-center">
           <ScrollReveal>
             <span className="text-accent font-semibold text-sm uppercase tracking-widest mb-3 block">Service</span>
-            <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">{data.title}</h1>
-            <p className="text-foreground/70 text-lg mb-8">{data.hero}</p>
+            <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-4">{data.title}</h1>
+            <p className="text-primary-foreground/85 text-lg mb-8">{data.hero}</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button variant="hero" size="xl" asChild>
                 <Link to="/contact"><FileText className="w-5 h-5" /> Get a Free Quote</Link>
               </Button>
               <Button variant="heroOutline" size="xl" asChild>
-                <a href="tel:[PHONE]"><Phone className="w-5 h-5" /> Call Now</a>
+                <a href={`tel:${SITE.phone.replace(/\s/g, "")}`}><Phone className="w-5 h-5" /> Call Now</a>
               </Button>
             </div>
           </ScrollReveal>
